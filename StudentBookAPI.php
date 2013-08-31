@@ -43,7 +43,8 @@ class StudentBookAPI {
 	 * @return Current lesson position or false if not found
 	 */
 	public function getCurrentLesson($lessons) {
-		$current = false;
+		$currentPosition = false;
+		$currentLesson = false;
 		$now = time();
 
 		foreach ($lessons as $k => $lesson) {
@@ -51,12 +52,13 @@ class StudentBookAPI {
 			$to = strtotime($lesson->duration_to) - self::$LESSON_OFFSET * 60;
 
 			if ($now >= $from && $now <= $to) {
-				$current = $lesson;
+				$currentPosition = $k;
+				$currentLesson = $lesson;
 				break;
 			}
 		}
 
-		return Array($k, $lesson);
+		return Array($currentPosition, $currentLesson);
 	}
 	
 	/**
