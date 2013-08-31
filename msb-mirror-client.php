@@ -68,6 +68,9 @@ class MirrorClient{
 	}
 
 
+  public function updateItem($id, TimeLineItem $new){
+    $this->service->timeline->update($id, $new);
+  }
 }
 
 ?>

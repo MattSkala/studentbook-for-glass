@@ -26,7 +26,13 @@ $items = $client->getBundle($today)->getItems();
 if(count($items)==0){
 	$client->pushSchedule($today, $lessons);
 }else{
-	//TODO: Update current item
+	if($current = $api->getCurrentLesson()){
+		if(isset($items[$current])){
+			$items[$current]->isBundleCover = true;
+			$client->updateItem($items[$current]->id, $items[$current]);
+		}
+	}
+
 }
 //var_dump($lessons);
 
