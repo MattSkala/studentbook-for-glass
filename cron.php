@@ -16,3 +16,5 @@ $lessons = $api->getTodayLessons();
 // Update timeline
 update_lessons_card($lessons);
 
+print_r(debug_backtrace());
+

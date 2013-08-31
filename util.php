@@ -25,7 +25,7 @@ function remove_credentials($user_id){
   $db = init_db();
   $user_id = SQLite3::escapeString(strip_tags($user_id));
 
-  $db->exec("remove * from credentials where `userid`='$user_id'");
+  $db->exec("delete * from credentials where `userid`='$user_id'");
 }
 function store_credentials($user_id, $credentials, $msb_token) {
   $db = init_db();
@@ -80,10 +80,8 @@ function update_lessons_card($lessons) {
 
   $client = get_google_api_client();
   $userid = $_SESSION['userid'];
-  var_dump($userid);
   $credentials = get_credentials($userid);
-  var_dump($credentials);
-  $client->setAccessToken($credentials);
+  $client->setAccessToken($credentials["credentials"]);
 
   // A glass service for interacting with the Mirror API
   $mirror_service = new Google_MirrorService($client);

@@ -44,7 +44,7 @@
     if(isset($_SESSION["userid"])){
       remove_credentials($_SESSION["userid"]);
     }
-    session_destroy();
+    unset($_SESSION);
   }
 
 	if(isset($_GET["success"])){
