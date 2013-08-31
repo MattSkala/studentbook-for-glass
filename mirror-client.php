@@ -180,19 +180,3 @@ function delete_timeline_item($service, $item_id) {
     print 'An error occurred: ' . $e->getMessage();
   }
 }
-
-
-function update_lessons_card($lessons) {
-  global $base_url;
-
-  $client = get_google_api_client();
-  $client->setAccessToken(get_credentials($_SESSION['userid']));
-
-  // A glass service for interacting with the Mirror API
-  $mirror_service = new Google_MirrorService($client);
-
-  $timeline_item = new Google_TimelineItem();
-  $timeline_item->setText("Hello Student!");
-
-  insert_timeline_item($mirror_service, $timeline_item, null, null);
-}
