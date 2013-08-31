@@ -29,10 +29,8 @@ require_once 'google-api-php-client/src/contrib/Google_Oauth2Service.php';
 function get_google_api_client() {
   global $api_client_id, $api_client_secret, $api_simple_key, $base_url;
   // Set your cached access token. Remember to replace $_SESSION with a
-  // real database or memcached.
-  if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-  }
+  // real database or memcached.  
+  @session_start();  
 
   $client = new Google_Client();
 

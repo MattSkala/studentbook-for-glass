@@ -21,7 +21,7 @@
 					header("Location: oauth2callback.php");
 					$success = true;
 				}else{
-					throw new Message("Chyba v přihlašování","error");
+					throw new Message("Login error","error");
 				}
 			}
 
@@ -38,7 +38,7 @@
 	}
 
 	if(isset($_GET["success"])){
-		$messages[] = new Message("Jste přihlášen k MyStudentsBook for Mirror", "success");
+		$messages[] = new Message("You are logged to myStudentsBook.com for Glass", "success");
 	}
 ?>
 
@@ -76,7 +76,7 @@
   	<?php } ?>
 
       <form class="form-signin" action="?login" method="POST">
-        <h2 class="form-signin-heading">Příhlášení</h2>
+        <h2 class="form-signin-heading">Login</h2>
         <input type="text" name="user" class="form-control" placeholder="E-mail" autofocus>
         <input type="password" name="pass" class="form-control" placeholder="Heslo">
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
