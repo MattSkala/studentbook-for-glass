@@ -22,7 +22,7 @@ $api_client_id = "447915940524.apps.googleusercontent.com";
 $api_client_secret = "C3kXZ-lnLdrxqwjGZN1vNCG5";
 $api_simple_key = "AIzaSyDb-0-A3ZwekuRf1-9QRcL7HOh9-KvUDbs";
 
-$base_url = "http://localhost/studentbook-for-glass";
+$base_url = "http://localhost/studentbook-for-glass/";
 
 // This should be writable by your web server's user
-$sqlite_database = "/tmp/database.sqlite";
+$sqlite_database = "tmp/database.sqlite";
