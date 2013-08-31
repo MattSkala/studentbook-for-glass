@@ -56,7 +56,7 @@ class StudentBookAPI {
 			}
 		}
 
-		return $k;
+		return Array($k, $lesson);
 	}
 	
 	/**
