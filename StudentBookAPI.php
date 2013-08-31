@@ -33,7 +33,7 @@ class StudentBookAPI {
 
 		return $lessons;
 	}
-
+	
 	/**
 	 * Fetches JSON from URL
 	 */
