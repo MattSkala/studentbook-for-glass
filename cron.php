@@ -25,8 +25,11 @@ $today = Date("N", time());
 $items = $client->getBundle($today)->getItems();
 if(count($items)==0){
 	$client->pushSchedule($today, $lessons);
-}else{
-	//TODO: Update current item
+}else{	
+	$lesson = $api->getCurrentLesson($lessons);
+
+	// TODO: update current item 
+	//$client->updateCurrentLesson($items, $lesson);
 }
 //var_dump($lessons);
 
