@@ -15,7 +15,7 @@ class MirrorClient{
   		}
 	}
 
-	public function insertCard(TimeLineItem $item){
+	public function insertCard(Google_TimeLineItem $item){
 		  try {
 		    $opt_params = array();
 		    if ($content_type != null && $attachment != null) {
@@ -68,7 +68,7 @@ class MirrorClient{
 	}
 
 
-  public function updateItem($id, TimeLineItem $new){
+  public function updateItem($id, Google_TimeLineItem $new){
     $this->service->timeline->update($id, $new);
   }
 }
