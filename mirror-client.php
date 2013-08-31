@@ -29,8 +29,8 @@ require_once 'google-api-php-client/src/contrib/Google_Oauth2Service.php';
 function get_google_api_client() {
   global $api_client_id, $api_client_secret, $api_simple_key, $base_url;
   // Set your cached access token. Remember to replace $_SESSION with a
-  // real database or memcached.  
-  @session_start();  
+  // real database or memcached.
+  session_start();
 
   $client = new Google_Client();
 
@@ -44,7 +44,8 @@ function get_google_api_client() {
   $client->setRedirectUri($base_url."/oauth2callback.php");
 
   $client->setScopes(array(
-    'https://www.googleapis.com/auth/glass.timeline'));
+    'https://www.googleapis.com/auth/glass.timeline',
+    'https://www.googleapis.com/auth/userinfo.profile'));
 
   return $client;
 }
