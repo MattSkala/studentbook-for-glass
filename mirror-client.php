@@ -180,4 +180,3 @@ function delete_timeline_item($service, $item_id) {
     print 'An error occurred: ' . $e->getMessage();
   }
 }
-
