@@ -22,7 +22,7 @@ $api_client_id = "API_CLIENT_ID";
 $api_client_secret = "API_CLIENT_SECRET";
 $api_simple_key = "API_KEY";
 
-$base_url = "http://localhost/mirror-quickstart-php";
+$base_url = "http://localhost/studentbook-for-android";
 
 // This should be writable by your web server's user
 $sqlite_database = "/tmp/database.sqlite";
