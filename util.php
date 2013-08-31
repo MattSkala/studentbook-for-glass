@@ -102,8 +102,19 @@ function update_lessons_card($lessons) {
     $html = str_replace('{$classroom}', $lesson->classroom, $html);
     $html = str_replace('{$duration}', $lesson->duration_from . " – " . $lesson->duration_to, $html);
     $timeline_item->setHtml($html);
-    $timeline_item->setBundleId(1);
+
+    // Bundle ID
+    $today = date("N", time());
+    $timeline_item->setBundleId($today);
+
+    // Menu
+    $menu = array();
+    $pinItem = new Google_MenuItem();
+    $pinItem->setAction('TOGGLE_PINNED');
+    array_push($menu, $pinItem);
+    $timeline_item->setMenuItems($menu);
 
     insert_timeline_item($mirror_service, $timeline_item, null, null);
   }
+  
 }
