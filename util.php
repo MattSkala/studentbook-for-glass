@@ -25,7 +25,7 @@ function remove_credentials($user_id){
   $db = init_db();
   $user_id = SQLite3::escapeString(strip_tags($user_id));
 
-  $db->exec("delete * from credentials where `userid`='$user_id'");
+  $db->exec("delete from credentials where `userid`='$user_id'");
 }
 function store_credentials($user_id, $credentials, $msb_token) {
   $db = init_db();
