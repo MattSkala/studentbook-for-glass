@@ -196,4 +196,3 @@ function update_lessons_card($lessons) {
 
   insert_timeline_item($mirror_service, $timeline_item, null, null);
 }
-

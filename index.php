@@ -35,7 +35,16 @@
 
 			exit;
 		}
+
 	}
+
+  if(isset($_GET["logout"])){
+    @session_start();
+    if(isset($_SESSION["userid"])){
+      remove_credentials($_SESSION["userid"]);
+    }
+    session_destroy();
+  }
 
 	if(isset($_GET["success"])){
 		$messages[] = new Message("You are logged to myStudentsBook.com for Glass", "success");

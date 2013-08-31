@@ -21,7 +21,12 @@ require_once 'mirror-client.php';
 require_once 'google-api-php-client/src/Google_Client.php';
 require_once 'google-api-php-client/src/contrib/Google_MirrorService.php';
 
+function remove_credentials($user_id){
+  $db = init_db();
+  $user_id = SQLite3::escapeString(strip_tags($user_id));
 
+  $db->exec("remove * from credentials where `userid`='$user_id'");
+}
 function store_credentials($user_id, $credentials, $msb_token) {
   $db = init_db();
   $user_id = SQLite3::escapeString(strip_tags($user_id));
