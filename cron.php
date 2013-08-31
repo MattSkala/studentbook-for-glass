@@ -1,11 +1,12 @@
 <?php
 require_once "StudentBookAPI.php";
+require_once "mirror-client.php";
 
 /**
  * Cron file that is launched every 5 minutes.
  */ 
 
-// TODO: get token for current user
+// TODO: foreach logged users
 $token = "2e057765633f536a7abb03560dc6a12ebc2bc096";
 $api = new StudentBookAPI($token);
 $lessons = $api->getTodayLessons();
@@ -13,4 +14,5 @@ $lessons = $api->getTodayLessons();
 var_dump($lessons);
 
 // Update timeline
-// TODO
+update_lessons_card($lessons);
+
