@@ -19,13 +19,12 @@
 // TODO: You must configure these fields for the starter project to function.
 // Visit https://developers.google.com/glass/getting-started to learn more
 
-display_errors(E_ALL);
 ini_set("display_errors", "on");
 
 
-$api_client_id = "447915940524.apps.googleusercontent.com";
-$api_client_secret = "C3kXZ-lnLdrxqwjGZN1vNCG5";
-$api_simple_key = "AIzaSyDb-0-A3ZwekuRf1-9QRcL7HOh9-KvUDbs";
+$api_client_id = "951949843560.apps.googleusercontent.com";
+$api_client_secret = "8gk9umi2N7HeXEafhRaJv_Ib";
+$api_simple_key = "AIzaSyCq0yLNqiR2B8Kml-uwfM1Xb-oDyAYV3bc";
 
 $base_url = "http://localhost/studentbook-for-glass";
 
