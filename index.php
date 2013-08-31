@@ -2,6 +2,7 @@
 <?php
 
 	include_once "URLRequest.php";
+  include_once "util.php";
 
 	$msb_api = "http://dev.mystudentbook.com/api2";
 
