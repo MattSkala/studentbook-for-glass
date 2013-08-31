@@ -35,7 +35,7 @@ class MirrorClient{
 
 	public function pushSchedule($today, $lessons){
 		$mirror_service = &$this->service;
-
+    krsort($lessons);
   foreach ($lessons as $lesson) {
     $timeline_item = new Google_TimelineItem();
     $html = file_get_contents('docs/template_timetable_day.html');
