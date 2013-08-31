@@ -4,7 +4,11 @@
  * StudentBook API for PHP wrapper
  */
 class StudentBookAPI {
-	private $API_URL = "http://dev.mystudentbook.com/api2";
+	/**
+	 * What time before lesson start the card appears as active (minutes)
+	 */
+	public static $LESSON_OFFSET = 10;
+	public static $API_URL = "http://dev.mystudentbook.com/api2";
 	private $token;
 
 	public function __construct($token) {
@@ -33,12 +37,33 @@ class StudentBookAPI {
 
 		return $lessons;
 	}
+
+	/**
+	 * Finds current lesson from today lessons array.
+	 * @return Current lesson position or false if not found
+	 */
+	public function getCurrentLesson($lessons) {
+		$current = false;
+		$now = time();
+
+		foreach ($lessons as $k => $lesson) {
+			$from = strtotime($lesson->duration_from) - self::$LESSON_OFFSET * 60;
+			$to = strtotime($lesson->duration_to) - self::$LESSON_OFFSET * 60;
+
+			if ($now >= $from && $now <= $to) {
+				$current = $lesson;
+				break;
+			}
+		}
+
+		return $k;
+	}
 	
 	/**
 	 * Fetches JSON from URL
 	 */
 	private function fetchJson($path) {
-		$url = $this->API_URL . $path;		
+		$url = self::$API_URL . $path;		
 		$json = file_get_contents($url);
 		$obj = json_decode($json);
 		return $obj;
