@@ -26,14 +26,14 @@ $items = $client->getBundle($today)->getItems();
 if(count($items)==0){
 	$client->pushSchedule($today, $lessons);
 }else{
-	$currentLesson = $api->getCurrentLesson($lessons);
-	if($currentLesson[0]!==false){
-		$current = $api->getCurrentLesson($lessons);
-		if(isset($items[$current[0]])){
+	$current = $api->getCurrentLesson($lessons);
+	if($current[0]!==false){
+		$c = count($items)-$current[0];
+
+		if(isset($items[$c])){
 			print_r($current);
 			print_r($items);
-			$items[$current[0]]->isBundleCover = true;
-			$client->updateItem($items[$current[0]]->id, $items[$current[0]]);
+			$client->updateItem($c, $items[$c]);
 
 		}
 	}

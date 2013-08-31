@@ -30,7 +30,7 @@ class MirrorClient{
 	}
 
 	public function getBundle($bundleId){
-		return $this->service->timeline->listTimeline(Array("bundleId"=>$bundleId));
+		return $this->service->timeline->listTimeline(Array("bundleId"=>$bundleId, "orderBy"=>"displayTime"));
 	}
 
 	public function pushSchedule($today, $lessons){
