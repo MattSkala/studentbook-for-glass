@@ -86,8 +86,24 @@ function update_lessons_card($lessons) {
   // A glass service for interacting with the Mirror API
   $mirror_service = new Google_MirrorService($client);
 
-  $timeline_item = new Google_TimelineItem();
-  $timeline_item->setText("Hello Student!");
+  foreach ($lessons as $lesson) {
+    $timeline_item = new Google_TimelineItem();
+    $html = file_get_contents('docs/template_timetable_day.html');
+    $html = str_replace('{$subject}', $lesson->subject->name, $html);
 
-  insert_timeline_item($mirror_service, $timeline_item, null, null);
+    // Fix color to be visible on Glass
+    $color = $lesson->subject->color;
+    if ($color == '#000000') {
+      $color = '#FFFFFF';
+    }
+
+    $html = str_replace('{$color}', $lesson->subject->color, $html);
+    $html = str_replace('{$teacher}', $lesson->subject->teacher->name, $html);
+    $html = str_replace('{$classroom}', $lesson->classroom, $html);
+    $html = str_replace('{$duration}', $lesson->duration_from . " – " . $lesson->duration_to, $html);
+    $timeline_item->setHtml($html);
+    $timeline_item->setBundleId(1);
+
+    insert_timeline_item($mirror_service, $timeline_item, null, null);
+  }
 }
