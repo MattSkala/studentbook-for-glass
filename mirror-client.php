@@ -44,9 +44,7 @@ function get_google_api_client() {
   $client->setRedirectUri($base_url."/oauth2callback.php");
 
   $client->setScopes(array(
-    'https://www.googleapis.com/auth/glass.timeline',
-    'https://www.googleapis.com/auth/glass.location',
-    'https://www.googleapis.com/auth/userinfo.profile'));
+    'https://www.googleapis.com/auth/glass.timeline'));
 
   return $client;
 }
